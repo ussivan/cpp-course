@@ -32,17 +32,17 @@ _start:
 
 .next_byte:
                 movzx           edx, byte [rsi + rax]
-                cmp             dl, 10
+                cmp             edx, 10
                 je             	.whitespace
-                cmp		dl, 9
+                cmp		edx, 9
                 je 		.whitespace
-                cmp		dl, 11
+                cmp		edx, 11
                 je 		.whitespace
-                cmp		dl, 12
+                cmp		edx, 12
                 je 		.whitespace
-                cmp		dl, 13
+                cmp		edx, 13
                 je 		.whitespace
-                cmp		dl, 32
+                cmp		edx, 32
                 je 		.whitespace
                 mov             r15, 1
 
