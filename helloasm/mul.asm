@@ -89,7 +89,7 @@ mul_long_long:
                 pop             rsi
                 pop             rsi
 
-                add             rsp, 4 * 256 * 8
+                add             rsp, 4 * QWLEN * 8
                 pop             r15
                 pop             r14
                 ret
