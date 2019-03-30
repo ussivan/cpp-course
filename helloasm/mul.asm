@@ -40,11 +40,14 @@ mul_long_long:
                 pop             rdi
                 pop             rdi
                 mov             r14, rsp
-                sub             rsp, 2 * 128 * 8
+                sub             rsp, 3 * 128 * 8
                 mov             r15, rsp
                 push            rdi
                 lea             rdi, [rsp + 8]
+                push            rcx
+                lea             rcx, [rcx * 3]
                 call            set_zero
+                pop             rcx
                 pop             rdi
                 push            rdi
                 push            rcx
@@ -70,13 +73,6 @@ mul_long_long:
 .move_regs:
                 add             rdi, 8
                 sub             r14, 8
-                push            rdi
-                push            rcx
-                mov             rdi, r14
-                mov             rcx, 1
-                call            set_zero
-                pop             rcx
-                pop             rdi
                 dec             rcx
                 jnz             .loop
 
@@ -93,7 +89,7 @@ mul_long_long:
                 pop             rsi
                 pop             rsi
 
-                add             rsp, 3 * 128 * 8
+                add             rsp, 4 * 128 * 8
                 pop             r15
                 pop             r14
                 ret
