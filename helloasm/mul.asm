@@ -3,13 +3,13 @@
                 global          _start
 _start:
 
-                sub             rsp, 2 * 128 * 8
-                lea             rdi, [rsp + 128 * 8]
-                mov             rcx, 128
+                sub             rsp, 2 * QWLEN * 8
+                lea             rdi, [rsp + QWLEN * 8]
+                mov             rcx, QWLEN
                 call            read_long
                 mov             rdi, rsp
                 call            read_long
-                lea             rsi, [rsp + 128 * 8]
+                lea             rsi, [rsp + QWLEN * 8]
                 call            mul_long_long
 
                 call            write_long
@@ -28,7 +28,7 @@ _start:
 mul_long_long:
                 push            r14
                 push            r15
-                sub             rsp, 128 * 8
+                sub             rsp, QWLEN * 8
                 push            rdi
                 lea             rdi, [rsp + 8]
                 push            rdi
@@ -40,7 +40,7 @@ mul_long_long:
                 pop             rdi
                 pop             rdi
                 mov             r14, rsp
-                sub             rsp, 3 * 128 * 8
+                sub             rsp, 3 * QWLEN * 8
                 mov             r15, rsp
                 push            rdi
                 lea             rdi, [rsp + 8]
@@ -83,13 +83,13 @@ mul_long_long:
                 push            rsi
                 push            rdi
                 push            rcx
-                rep movsq
+                rep             movsq
                 pop             rcx
                 pop             rdi
                 pop             rsi
                 pop             rsi
 
-                add             rsp, 4 * 128 * 8
+                add             rsp, 4 * 256 * 8
                 pop             r15
                 pop             r14
                 ret
@@ -381,6 +381,7 @@ print_string:
 
 
                 section         .rodata
+QWLEN: equ              256
 invalid_char_msg:
                 db              "Invalid character: "
 invalid_char_msg_size: equ             $ - invalid_char_msg
