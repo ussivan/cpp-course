@@ -1,8 +1,7 @@
 #include "big_integer.h"
 #include <algorithm>
-
-#include <cstring>
-
+#include <string>
+    
 const ui max_ui = std::numeric_limits<ui>::max();
 const big_integer ZERO = big_integer(0);
 const ui MAX_2 = static_cast<ui>(std::numeric_limits<ui>::digits);
