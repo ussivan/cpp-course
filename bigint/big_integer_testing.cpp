@@ -4,8 +4,17 @@
 #include <vector>
 #include <utility>
 #include <gtest/gtest.h>
+#include <iostream>
 
 #include "big_integer.h"
+
+TEST(correctness, dhhj)
+{
+    big_integer a("1380764598981621746618715599443002656260032314095527740273623976");
+    big_integer b("5571470109175790490764559317890169365213588967553291418830012397");
+    std::cout << "a: " << a << ", b: " << b << "\n";
+    std::cout << (a < b) << "\n";
+}
 
 TEST(correctness, two_plus_two)
 {
